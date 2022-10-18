@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const sessionConfig = require('./sessionConfig');
 
-const { resLocals, getUser } = require('../middleware/login');
+const { resLocals, getUser } = require('../middleware/ssr');
 
 const ssr = require('../middleware/ssr');
 

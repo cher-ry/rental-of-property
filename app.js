@@ -13,6 +13,7 @@ const PORT = process.env.PORT ?? 3000;
 // routers
 
 // здесь подключаем роуты
+
 // const mainRouter = require('./routes/main.route');
 
 config(app);
