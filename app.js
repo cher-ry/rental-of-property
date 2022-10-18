@@ -5,7 +5,7 @@ const express = require('express');
 
 const config = require('./config/serverConfig');
 const { sequelize } = require('./db/models');
-
+const regoRouter = require('./routes/render/registration')
 const app = express();
 
 const PORT = process.env.PORT ?? 3000;
@@ -20,6 +20,7 @@ config(app);
 
 // здесь запускаем роуты
 // app.use('/', mainRouter);
+app.use('/registration',regoRouter)
 
 sequelize.authenticate({ logging: false });
 
