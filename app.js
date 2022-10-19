@@ -25,7 +25,7 @@ const mainRouter = require('./routes/render/mainRouter');
 
 
 const authRouter = require('./routes/authRouter');
-
+const adminRouter = require('./routes/render/adminRouter')
 
 
 // здесь запускаем роуты
@@ -35,7 +35,7 @@ app.use('/', mainRouter);
 app.use('/auth', authRouter);
 
 app.use('/registration',regoRouter)
-
+app.use('/admin',adminRouter)
 
 // sequelize.authenticate({ logging: false });
 
