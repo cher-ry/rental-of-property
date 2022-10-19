@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function EditAdd({add}){
     return(
         <Layout>
-<form className="EditAddForm" method="POST" action={`/admin/${add.id}/edit`}>
+<form className="editAddForm" method="POST" action={`/admin/${add.id}/edit`}>
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  value={add.category}/>
@@ -29,8 +29,9 @@ function EditAdd({add}){
         <div className="mb-3">
           <label className="form-label">Добавление точки на карте</label>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button> <button type="submit" className="delete btn btn-primary">Удалить объявление</button>
+        <button type="submit" className="btn btn-primary">Подтвердить изменения</button> <button type="submit" className="delete btn btn-primary">Удалить объявление</button>
       </form>
+      <script defer src="/js/editAdd"></script>
         </Layout>
     )
     }
