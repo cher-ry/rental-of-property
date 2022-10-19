@@ -21,4 +21,4 @@ const config = (app) => {
   app.use(ssr);
 };
 
-// module.exports = config;
+module.exports = config;
