@@ -1,6 +1,8 @@
 const React = require('react');
 
-function Layout({ children }) {
+const Header = require('./Header');
+
+function Layout({ children, user }) {
   return (
     <html lang="en">
       <head>
@@ -12,6 +14,7 @@ function Layout({ children }) {
         <title>Wolves Rent</title>
       </head>
       <body>
+        <Header user={user} />
         {children}
       </body>
     </html>
