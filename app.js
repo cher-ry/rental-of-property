@@ -1,5 +1,6 @@
 require('@babel/register');
-
+// использование данных из конфигурации файла .env
+require('dotenv').config();
 const express = require('express');
 
 
