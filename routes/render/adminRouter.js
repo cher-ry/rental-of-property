@@ -7,7 +7,6 @@ const EditAdd = require('../../views/EditAdd')
 router.route('/')
 .get(async (req, res) => {
   const articles = await Article.findAll({raw:true})
-  console.log(articles)
   res.renderComponent(AdminPage, {articles});
 })
 .post(async(req,res)=>{
@@ -40,22 +39,34 @@ router.route('/:id/edit')
   })
 .put(async(req,res)=>{
     try {
-        const entry = await Entry.update({
-          title: req.body.title,
-          body: req.body.body,
+        const entry = await Article.update({
+        category:req.body.category,
+          price: req.body.price,
+          description: req.body.description,
+          photo:req.body.photo,
+          address: req.body.address,
         }, {
-          where: { id: req.params.id },
-          returning: true,
-          plain: true,
+          where: { id: req.params.id }
         });
     
-        res.json({ isUpdateSuccessful: true, entryID: entry[1].id });
+        res.json({ isUpdateSuccessful: true });
       } catch (error) {
         res.json({
           isUpdateSuccessful: false,
-          errorMessage: 'Не удалось обновить запись в базе данных.',
+          errorMessage: 'Не удалось обновить объявление в базе данных.',
         });
       }
 })
 
+router.delete('/:id', async (req,res)=>{
+try {
+    await Article.destroy({ where: { id: req.params.id } });
+    res.json({ isDeleteSuccessful: true });
+  } catch (error) {
+    res.json({
+      isDeleteSuccessful: false,
+      errorMessage: 'Не удалось удалить объявление из базы данных.',
+    });
+  }
+})
 module.exports = router;

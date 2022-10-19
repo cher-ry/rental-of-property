@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function EditAdd({add}){
     return(
         <Layout>
-<form className="editAddForm" method="POST" action={`/admin/${add.id}/edit`}>
+<form className="editAddForm" encType="multipart/form-data" data-id={add.id} action={`/admin/${add.id}/edit`}>
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  value={add.category}/>
@@ -20,6 +20,7 @@ function EditAdd({add}){
         </div>
         <div className="mb-3">
           <label htmlFor="photo" className="form-label">Фото</label>
+          <div className="mb-3">{add.photo}</div>
           <input type="file" name="photo" className="form-control" id="photo" value={add.photo}/>
         </div>
         <div className="mb-3">
@@ -29,9 +30,9 @@ function EditAdd({add}){
         <div className="mb-3">
           <label className="form-label">Добавление точки на карте</label>
         </div>
-        <button type="submit" className="btn btn-primary">Подтвердить изменения</button> <button type="submit" className="delete btn btn-primary">Удалить объявление</button>
+        <button type="submit" className="btn btn-primary">Подтвердить изменения</button> <button  data-id={add.id} className="delete btn btn-primary">Удалить объявление</button>
       </form>
-      <script defer src="/js/editAdd"></script>
+      <script defer src="/js/editAdd.js"></script>
         </Layout>
     )
     }
