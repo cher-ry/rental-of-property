@@ -1,25 +1,26 @@
 require('@babel/register');
 
 const express = require('express');
-// const session = require('express-session');
 
-// const config = require('./config/serverConfig');
-// const { sequelize } = require('./db/models');
+const config = require('./config/serverConfig');
+const { sequelize } = require('./db/models');
 
 const app = express();
 
 const PORT = process.env.PORT ?? 3000;
+config(app);
 
 // routers
 
 // здесь подключаем роуты
-
 // const mainRouter = require('./routes/main.route');
+const authRouter = require('./routes/authRouter');
 
-// config(app);
+
 
 // здесь запускаем роуты
 // app.use('/', mainRouter);
+app.use('/auth', authRouter);
 
 // sequelize.authenticate({ logging: false });
 
