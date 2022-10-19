@@ -7,7 +7,7 @@ const sessionConfig = {
   store: new FileStore(), // тип хранилища - FileStore, который создаёт нам папку с файлами
   key: 'user_uid', // ключ - название куки
   secret: 'cookie', // слово используемое для шифрования, может быть любым
-  resave: true, // настройка пересохранения куки, при каждом запросе
+  resave: false, // настройка пересохранения куки, при каждом запросе
   saveUninitialized: false, // настройка для создания сессии, даже без авторизации
   cookie: {
     expires: 1000 * 60 * 60 * 12, // время "протухания" куки в миллисекундах
@@ -15,4 +15,4 @@ const sessionConfig = {
   },
 };
 
-// module.exports = sessionConfig;
+module.exports = sessionConfig;
