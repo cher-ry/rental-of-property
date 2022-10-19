@@ -3,6 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
 const Authentication = require('../../views/Authentication');
+const Forgot = require('../../views/Forgot')
 const { User } = require('../../db/models');
 
 router.get('/', (req, res) => {
@@ -21,13 +22,19 @@ router.post('/', async(req, res) =>{
     if (!passwordCompare && user.email === email){
       res.json({login: false, message: errMessage});
     }
-    req.session.userID = user.id;
+    if (user.admin){
+      req.session.adminID = user.id;
+    }else{
+      req.session.userID = user.id;
+    }
     res.json({login: true})
   } catch (error){
     console.log(error.message);
   }
 })
-
+router.get('/forgot', (req, res) => {
+  res.renderComponent(Forgot, {});
+});
 
 
 

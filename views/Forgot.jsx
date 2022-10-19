@@ -20,7 +20,7 @@ function Forgot({ title }) {
                 required
                 autoComplete="off"
               />
-            <div id="feedback" className="invalid-feedback" />
+            
             <button type="submit" className="forgot-button">Reset password</button>
             <a href="/" className='btn'>Back home</a>
           </form>

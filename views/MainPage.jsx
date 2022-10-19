@@ -2,7 +2,7 @@ const React = require('react');
 
 const Layout = require('./Layout');
 
-function MainPage({articles}) {
+function MainPage({articles, user}) {
   return (
     <Layout user={user}>
        <div className="article-container">
