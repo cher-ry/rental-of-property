@@ -32,6 +32,7 @@ function Registration() {
         <div id="confirm" />
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+      <script defer src="js/registration.js" />
     </Layout>
   );
 }
