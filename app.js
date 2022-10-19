@@ -5,7 +5,6 @@ const express = require('express');
 
 const config = require('./config/serverConfig');
 const { sequelize } = require('./db/models');
-const regoRouter = require('./routes/render/registration')
 
 
 
@@ -19,6 +18,7 @@ config(app);
 // здесь подключаем роуты
 
 
+const regoRouter = require('./routes/render/registration')
 const mainRouter = require('./routes/render/mainRouter');
 
 
@@ -28,12 +28,10 @@ const authRouter = require('./routes/authRouter');
 const adminRouter = require('./routes/render/adminRouter')
 
 
+
 // здесь запускаем роуты
 app.use('/', mainRouter);
-
-
 app.use('/auth', authRouter);
-
 app.use('/registration',regoRouter)
 app.use('/admin',adminRouter)
 
