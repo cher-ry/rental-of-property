@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function NewAdd(){
     return(
         <Layout>
-<form className="newAddForm" method="POST" action="/">
+<form className="newAddForm" method="POST" action="/admin">
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  placeholder="квартира, комната или дом"/>
