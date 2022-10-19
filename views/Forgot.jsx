@@ -21,8 +21,8 @@ function Forgot({ title }) {
                 autoComplete="off"
               />
             
-            <button type="submit" className="forgot-button">Reset password</button>
-            <a href="/" className='btn'>Back home</a>
+            <button type="submit" className="forgot-button">Сбросить пароль</button>
+            <a href="/" className='btn'>На главную</a>
           </form>
         </main>
     </Layout>
