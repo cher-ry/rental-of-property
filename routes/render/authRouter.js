@@ -1,11 +1,14 @@
 const router = require('express').Router();
+
 const bcrypt = require('bcrypt');
+
 const Authentication = require('../../views/Authentication');
 const { User } = require('../../db/models');
 
 router.get('/', (req, res) => {
   res.renderComponent(Authentication, {});
 });
+
 router.post('/', async(req, res) =>{
   try{
     const {email, password} = req.body;
@@ -24,6 +27,7 @@ router.post('/', async(req, res) =>{
     console.log(error.message);
   }
 })
+
 
 
 
