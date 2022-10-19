@@ -6,7 +6,7 @@ function Registration() {
     <Layout>
       <form className="regoForm" method="POST" action="/registration">
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Login</label>
+          <label htmlFor="exampleInputLogin" className="form-label">Login</label>
           <input type="text" name="login" className="form-control" id="exampleInputLogin" />
         </div>
         <div className="mb-3">
@@ -19,12 +19,12 @@ function Registration() {
           <input type="password" name="password" className="form-control" id="exampleInputPassword1" />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password Confirmation</label>
+          <label htmlFor="exampleInputPassword" className="form-label">Password Confirmation</label>
           <input type="password" name="passwordconf" className="form-control" id="exampleInputPassword" />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Admin</label>
-          <select name="role" className="select">
+          <label htmlFor="exampleInputRole" className="form-label">Admin</label>
+          <select name="role" className="select" id="exampleInputRole">
             <option>true</option>
             <option>false</option>
           </select>
