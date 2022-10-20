@@ -24,7 +24,7 @@ const mainRouter = require('./routes/render/mainRouter');
 
 
 
-const authRouter = require('./routes/authRouter');
+const authRouter = require('./routes/render/authRouter');
 const adminRouter = require('./routes/render/adminRouter')
 
 

@@ -2,14 +2,14 @@ const React = require('react');
 
 const Layout = require('./Layout');
 
-function MainPage({articles}) {
+function MainPage({articles,user}) {
   return (
     <Layout user={user}>
        <div className="article-container">
                 <div className="card">
                     {articles.map((article) => (
                       <section className="card-one">
-                        <img src={`${article.photo}`} className="card-photo" alt="article" style={{ width: "18rem" }} />
+                        <img src={`${article.photo.replace('/home/user/Sophia/Phase 2/rental-of-property/public','')}`} className="card-photo" alt="article" style={{ width: "18rem" }} />
                         <div className="card-body">
                         <p className="card-text">{`${article.description}`}</p>
             <p className="card-text">Цена: {article.price}</p>
