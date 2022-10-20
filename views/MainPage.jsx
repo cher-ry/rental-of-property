@@ -17,7 +17,7 @@ function MainPage({ articles, user }) {
       </div>
       <div className="article-container">
         <div className="card">
-          <ArticlesView articles={articles} />
+          <ArticlesView articles={articles} user={user} />
         </div>
       </div>
       <script defer src="js/mainPage.js" />

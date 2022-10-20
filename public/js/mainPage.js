@@ -15,3 +15,4 @@ form.addEventListener('change', async (event) => {
   const data = await response.text();
   newAd.innerHTML = data;
 });
+

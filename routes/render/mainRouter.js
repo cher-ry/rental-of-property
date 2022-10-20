@@ -4,7 +4,7 @@ const ArticlesView = require('../../views/ArticlesView');
 const MainPage = require('../../views/MainPage');
 
 router.route('/').get(async (req, res) => {
-  const user = res.locals;
+  const user = req.session.userId;
   const articles = await Article.findAll({ raw: true });
 
   res.renderComponent(MainPage, { articles, user });
@@ -12,7 +12,12 @@ router.route('/').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   const { category } = req.body;
-  const user = res.locals;
+  const user = req.session.userId;
+  if (category === 'все') {
+    const articles = await Article.findAll({ raw: true });
+
+    res.renderComponent(ArticlesView, { articles, user });
+  }
   const articles = await Article.findAll({
     where: {
       category,

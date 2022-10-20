@@ -29,14 +29,16 @@ const mainRouter = require('./routes/render/mainRouter');
 const authRouter = require('./routes/render/authRouter');
 const adminRouter = require('./routes/render/adminRouter');
 const { transporter } = require('./config/nodemailerConfig');
-
+const logoutRouter = require('./routes/render/logoutRouter');
 
 
 // здесь запускаем роуты
 app.use('/', mainRouter);
 app.use('/auth', authRouter);
 app.use('/registration', regoRouter)
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
+app.use('/logout', logoutRouter);
+
 
 sequelize.authenticate({ logging: false });
 
