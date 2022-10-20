@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function EditAdd({add}){
     return(
         <Layout>
-<form className="editAddForm"  ref='uploadForm'  encType="multipart/form-data" data-id={add.id} >
+<form className="editAddForm"  ref='uploadForm' method="post" encType="multipart/form-data" data-id={add.id} action={`/admin/${add.id}/edit`}>
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  value={add.category}/>
