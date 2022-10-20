@@ -2,16 +2,17 @@ const form = document.querySelector('.editAddForm')
 const deleteBtn = document.querySelector('.delete')
 form.addEventListener('submit',async (event)=>{
     event.preventDefault()
+    console.log(event.target.photo.files[0])
     const response = await fetch(`/admin/${event.target.dataset.id}/edit`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
         body: JSON.stringify({
-          category: event.target.title.category,
+          category: event.target.category.value,
           price: event.target.price.value,
           description: event.target.description.value,
-          photo: event.target.photo.value,
+          photo: event.target.photo.files[0],
           address: event.target.address.value,
         }),
       });
