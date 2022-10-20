@@ -2,6 +2,8 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const { User } = require('../db/models');
 
+const { User } = require('../db/models');
+
 function renderComponent(reactComponent, props = {}, options = { doctype: true }) {
   const reactElement = React.createElement(reactComponent, {
     ...this.app.locals,
@@ -21,7 +23,6 @@ function ssr(req, res, next) {
   next();
 }
 
-
 // локальные переменные
 const resLocals = (req, res, next) => {
   if (req.session.userId) {
@@ -38,6 +39,6 @@ const getUser = async (req, res, next) => {
   next();
 };
 
+module.exports = { ssr, resLocals, getUser};
 
 
-module.exports = {ssr,resLocals, getUser};
