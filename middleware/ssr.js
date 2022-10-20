@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const { User } = require('../db/models');
 
+
 function renderComponent(reactComponent, props = {}, options = { doctype: true }) {
   const reactElement = React.createElement(reactComponent, {
     ...this.app.locals,
@@ -37,5 +38,7 @@ const getUser = async (req, res, next) => {
   next();
 };
 
-module.exports = { resLocals, getUser, ssr
-};
+
+module.exports = { ssr, resLocals, getUser};
+
+

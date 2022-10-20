@@ -2,7 +2,10 @@
 const form = document.querySelector('.form-authentification');
 
 
-const invalidFeedback = document.querySelector('#feedback');
+const invalidFeedback = document.querySelector(".invalid-feedback2");
+const emailValue = document.querySelector('#loginInputEmail');
+const passwordValue = document.querySelector('#loginPassword');
+
 
 form.addEventListener('submit', async (event) => {
 
@@ -22,11 +25,15 @@ form.addEventListener('submit', async (event) => {
   console.log(data)
 
   if (!data.login){
+    console.log(data.message);
+    console.log(invalidFeedback);
     invalidFeedback.innerHTML = data.message;
-    window.location.replace('/auth');
+    emailValue.value ="";
+    passwordValue.value ="";
+    
+    // window.location.replace('/auth');
 
-  }
-  if (data.login){
+  } else {
     window.location.replace('/');
   }
 } catch(error){

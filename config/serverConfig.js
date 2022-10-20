@@ -17,6 +17,7 @@ const config = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static('public'));
   app.use(session(sessionConfig));
+
   app.use(fileUpload())
   app.use(resLocals);
   app.use(getUser);

@@ -1,5 +1,6 @@
 require('@babel/register');
-
+// использование данных из конфигурации файла .env
+require('dotenv').config();
 const express = require('express');
 
 
@@ -11,6 +12,7 @@ const { sequelize } = require('./db/models');
 const app = express();
 
 const PORT = process.env.PORT ?? 3000;
+
 config(app);
 
 // routers
@@ -35,7 +37,7 @@ app.use('/auth', authRouter);
 app.use('/registration',regoRouter)
 app.use('/admin',adminRouter)
 
-// sequelize.authenticate({ logging: false });
+sequelize.authenticate({ logging: false });
 
 
 app.listen(PORT, async () => {

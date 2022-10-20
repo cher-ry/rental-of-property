@@ -2,17 +2,21 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Favorites', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       userId: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
       },
       articleId: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
+      references: {
+        model: 'Articles',
+        key: 'id',
+      },
       },
       createdAt: {
         allowNull: false,
