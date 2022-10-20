@@ -58,35 +58,34 @@ router.route('/:id/edit')
         })
         res.renderComponent(EditAdd, { add });
     })
-    .put(async (req, res) => {
-        console.log('req.files', req.files)
-        console.log('req.body', req.body)
-        // let photopath = path.resolve(__dirname, '../../public/images', photo.name)
+    .post( async (req, res) => {
+        let photo = req.files.photo
+        let photopath = path.resolve(__dirname, '../../public/images', photo.name)
 
-        // photo.mv(photopath, function (err) {
-        //     if (err)
-        //         return res.status(500).send(err);
+        photo.mv(photopath, function (err) {
+            if (err)
+                return res.status(500).send(err);
 
-        //     res.send('File uploaded!');
-        // })
-        // try {
-        //     const entry = await Article.update({
-        //         category: req.body.category,
-        //         price: req.body.price,
-        //         description: req.body.description,
-        //         photo: photopath,
-        //         address: req.body.address,
-        //     }, {
-        //         where: { id: req.params.id }
-        //     });
+            res.send('File uploaded!');
+        })
+        try {
+            const entry = await Article.update({
+                category: req.body.category,
+                price: req.body.price,
+                description: req.body.description,
+                photo: photopath,
+                address: req.body.address,
+            }, {
+                where: { id: req.params.id }
+            });
 
-        //     res.json({ isUpdateSuccessful: true });
-        // } catch (error) {
-        //     res.json({
-        //         isUpdateSuccessful: false,
-        //         errorMessage: 'Не удалось обновить объявление в базе данных.',
-        //     });
-        // }
+            res.json({ isUpdateSuccessful: true });
+        } catch (error) {
+            res.json({
+                isUpdateSuccessful: false,
+                errorMessage: 'Не удалось обновить объявление в базе данных.',
+            });
+        }
 
         res.send({ok: 'test'})
     })
