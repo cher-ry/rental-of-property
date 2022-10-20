@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const { User } = require('../db/models');
 
 function renderComponent(reactComponent, props = {}, options = { doctype: true }) {
   const reactElement = React.createElement(reactComponent, {
@@ -20,4 +21,23 @@ function ssr(req, res, next) {
   next();
 }
 
-module.exports = ssr;
+
+// локальные переменные
+const resLocals = (req, res, next) => {
+  if (req.session.userId) {
+    res.locals.userId = req.session.userId;
+  }
+  next();
+};
+
+// ищем юзера в Бд по айди
+const getUser = async (req, res, next) => {
+  if (req.session.userId) {
+    res.locals.user = await User.findByPk(Number(req.session.userId), { raw: true });
+  }
+  next();
+};
+
+
+
+module.exports = {ssr,resLocals, getUser};
