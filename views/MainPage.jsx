@@ -2,7 +2,7 @@ const React = require('react');
 
 const Layout = require('./Layout');
 
-function MainPage({articles, user}) {
+function MainPage({articles, user, categories}) {
   return (
     <Layout user={user}>
       <div className="filter-container">
