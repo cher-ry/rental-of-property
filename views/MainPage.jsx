@@ -16,6 +16,8 @@ function MainPage({articles, user, categories}) {
             <option value="дом" id="house">дом</option>
           </select>
         </div>
+        <div id="map" className="map"></div>
+         <div id="add"></div>
        <div className="article-container">
                 <div className="card">
                     {articles.map((article) => (
