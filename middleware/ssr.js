@@ -38,6 +38,7 @@ const getUser = async (req, res, next) => {
   next();
 };
 
+
 module.exports = { ssr, resLocals, getUser};
 
 

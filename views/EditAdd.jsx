@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function EditAdd({add}){
     return(
         <Layout>
-<form className="EditAddForm" method="POST" action={`/admin/${add.id}/edit`}>
+<form className="editAddForm"  ref='uploadForm'  encType="multipart/form-data" data-id={add.id} >
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  value={add.category}/>
@@ -15,12 +15,12 @@ function EditAdd({add}){
         </div>
         <div className="mb-3">
           <label htmlFor="description" className="form-label">Описание</label>
-          <textarea rows="3" cols="40" id="description" className="form-control" value={add.description}></textarea>
-          {/* <input type="text" name="password" className="form-control" id="description" /> */}
+          <input type="text" name="description"  className="form-control" id="description" value={add.description} />
         </div>
         <div className="mb-3">
           <label htmlFor="photo" className="form-label">Фото</label>
-          <input type="file" name="photo" className="form-control" id="photo" value={add.photo}/>
+          <div className="mb-3">{add.photo}</div>
+          <input type="file" name="photo" className="form-control" id="photo"/>
         </div>
         <div className="mb-3">
           <label htmlFor="address" className="form-label"> Адрес</label>
@@ -29,8 +29,9 @@ function EditAdd({add}){
         <div className="mb-3">
           <label className="form-label">Добавление точки на карте</label>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button> <button type="submit" className="delete btn btn-primary">Удалить объявление</button>
+        <button type="submit" className="btn btn-primary">Подтвердить изменения</button> <button  data-id={add.id} className="delete btn btn-primary">Удалить объявление</button>
       </form>
+      <script defer src="/js/editAdd.js"></script>
         </Layout>
     )
     }

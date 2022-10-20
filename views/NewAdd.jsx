@@ -4,7 +4,7 @@ const Layout = require('../views/Layout')
 function NewAdd(){
     return(
         <Layout>
-<form className="newAddForm" method="POST" action="/admin">
+<form className="newAddForm" method="POST"  encType="multipart/form-data" ref='uploadForm' action="/admin">
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
           <input type="text" name="category" id="category" className="form-control"  placeholder="квартира, комната или дом"/>
@@ -15,8 +15,8 @@ function NewAdd(){
         </div>
         <div className="mb-3">
           <label htmlFor="description" className="form-label">Описание</label>
-          <textarea rows="3" cols="40" id="description" className="form-control" placeholder="Например: Сдаю прекрасную квартиру на Невском"></textarea>
-          {/* <input type="text" name="password" className="form-control" id="description" /> */}
+  
+          <input type="text" rows="3" cols="40" name="description" className="form-control" placeholder="Например: Сдаю прекрасную квартиру на Невском" id="description" />
         </div>
         <div className="mb-3">
           <label htmlFor="photo" className="form-label">Фото</label>
