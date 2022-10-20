@@ -7,8 +7,8 @@ const nodemailer = require('nodemailer');
 // конфигурация nodemailer транспортёра почты
 const transporter = nodemailer.createTransport(
   {
-    host: 'smtp.ethereal.email',
-    port: 587,
+    host: 'smtp.yandex.ru',
+    port: 465,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -20,6 +20,7 @@ const transporter = nodemailer.createTransport(
 );
 
 const messageCreator = (to, subject, text) => ({
+  from: process.env.EMAIL_USER,
   to,
   subject,
   text,
@@ -31,9 +32,9 @@ const mailer = (message) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(`Email send: ${info}`);
+      console.log(`Email send:`, info);
     }
   });
 };
 
-module.exports = { mailer, messageCreator };
+module.exports = { mailer, messageCreator, transporter };
