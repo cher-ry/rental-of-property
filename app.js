@@ -27,23 +27,33 @@ const mainRouter = require('./routes/render/mainRouter');
 
 
 const authRouter = require('./routes/render/authRouter');
-const adminRouter = require('./routes/render/adminRouter')
+const adminRouter = require('./routes/render/adminRouter');
+const { transporter } = require('./config/nodemailerConfig');
 
 
 
 // здесь запускаем роуты
 app.use('/', mainRouter);
 app.use('/auth', authRouter);
-app.use('/registration',regoRouter)
-app.use('/admin',adminRouter)
+app.use('/registration', regoRouter)
+app.use('/admin', adminRouter)
 
 sequelize.authenticate({ logging: false });
 
 
 app.listen(PORT, async () => {
+  console.log(`Server started ${PORT}`);
   try {
-    console.log(`Server started ${PORT}`);
+    // todo await sequelize.authenticate()
   } catch (error) {
     console.log("something's wrong");
+  }
+
+  try {
+    await transporter.verify();
+    console.log('Server is ready to send emails')
+  } catch (error) {
+    console.log('Problem with Nodemailer:')
+    console.log(error.message)
   }
 });
