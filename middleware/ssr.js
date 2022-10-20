@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const { User } = require('../db/models');
 
 const { User } = require('../db/models');
 
@@ -39,4 +40,5 @@ const getUser = async (req, res, next) => {
 };
 
 module.exports = { ssr, resLocals, getUser};
+
 
