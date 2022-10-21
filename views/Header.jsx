@@ -9,12 +9,11 @@ function Header({ user }) {
             <li className="navbar-item">
               <a className="nav-link" href="/">Main</a>
             </li>
-            {user && (user.admin) && (
+            {user.admin ? (
               <li className="navbar-item">
                 <a className="nav-link" href="/admin">Admin</a>
               </li>
-            )}
-            {user && (!user.admin) && (
+            ) : (
               <li className="navbar-item">
                 <a className="nav-link" href="/favorites">My favorites</a>
               </li>
