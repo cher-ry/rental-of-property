@@ -4,6 +4,8 @@ const Layout = require('../views/Layout')
 function NewAdd(){
     return(
         <Layout>
+          <script defer src="https://api-maps.yandex.ru/2.1/?apikey=a6375016-4e69-4b91-949c-0b2e86a23a35&lang=ru_RU" />
+          <script defer src="/js/mapNewAdd.js"></script>
 <form className="newAddForm" method="POST"  encType="multipart/form-data" ref='uploadForm' action="/admin">
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Категория</label>
@@ -28,6 +30,8 @@ function NewAdd(){
         </div>
         <div className="mb-3">
           <label className="form-label">Добавление точки на карте</label>
+          <div id="map" className="map"></div>
+          <div id="add"></div>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
