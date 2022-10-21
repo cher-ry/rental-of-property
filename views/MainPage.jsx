@@ -6,6 +6,8 @@ const Layout = require('./Layout');
 function MainPage({ articles, user }) {
   return (
     <Layout user={user}>
+      <script defer src="https://api-maps.yandex.ru/2.1/?apikey=a6375016-4e69-4b91-949c-0b2e86a23a35&lang=ru_RU" />
+      <script defer src="/js/mapMain.js"></script>
       <div className="filter-container">
         <label htmlFor="filter" className="form-label">Отсортировать</label>
         <select name="filter" className="filter-btn">
@@ -19,8 +21,27 @@ function MainPage({ articles, user }) {
         <div className="card">
           <ArticlesView articles={articles} user={user} />
         </div>
-      </div>
-      <script defer src="js/mainPage.js" />
+
+        <div id="map" className="map"></div>
+         <div id="add"></div>
+       <div className="article-container">
+                <div className="card">
+                    {articles.map((article) => (
+                      <section className="card-one">
+                        <img src={`${article.photo.replace('/home/user/Sophia/Phase 2/rental-of-property/public','')}`} className="card-photo" alt="article" style={{ width: "18rem" }} />
+                        <div className="card-body">
+                        <p className="card-text">{`${article.description}`}</p>
+            <p className="card-text">Цена: {article.price}</p>
+             {user && (<button onclick=" " name={`btn${article.id}`} type="button"
+             className="btn btn-outline-primary">Добавить в избранное</button>)}
+             {/* {user && user.admin && (<a href='/favorite' className="favorite">Добавить в избранное</a>)} */}
+                        </div>
+                      </section>
+                    ))}
+                </div>
+            </div>
+            <script defer src="js/mainPage.js"></script>
+
     </Layout>
   );
 }
