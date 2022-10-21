@@ -18,6 +18,7 @@ form.addEventListener('change', async (event) => {
   newAd.innerHTML = data;
 });
 
+
 console.log(favoriteBtn);
 console.log(artForm);
 
@@ -41,3 +42,4 @@ favoriteBtn.forEach((button) => {
 
 //   console.log(currentBtn);
 // });
+

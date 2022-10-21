@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const { Favorite, Article } = require('../../db/models');
 const ArticlesView = require('../../views/ArticlesView');
 const MainPage = require('../../views/MainPage');
@@ -39,6 +40,7 @@ router.route('/').get(async (req, res) => {
   // console.log({ userId });
   // console.log(articles[0].FavoredBy);
   res.renderComponent(MainPage, { articles, user: userId });
+
 });
 
 module.exports = router;
