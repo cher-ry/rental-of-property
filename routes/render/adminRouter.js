@@ -19,7 +19,7 @@ router.route('/')
     const { photo } = req.files;
 
     const photopath = path.resolve(__dirname, '../../public/images', photo.name);
-
+    const newpath = path.resolve('/images', photo.name) 
     photo.mv(photopath, (err) => {
       if (err) { return res.status(500).send(err); }
     });
@@ -28,7 +28,7 @@ router.route('/')
         category: req.body.category,
         price: req.body.price,
         description: req.body.description,
-        photo: photopath,
+        photo: newpath,
         address: req.body.address,
       });
 
@@ -90,7 +90,7 @@ router.route('/:id/edit')
         });
       }
     }
-    res.redirect('/admin')
+    res.redirect('/admin');
   });
 
 router.delete('/:id', async (req, res) => {
