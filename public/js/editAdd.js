@@ -1,5 +1,5 @@
 // const form = document.querySelector('.editAddForm')
-const deleteBtn = document.querySelector('.delete')
+const deleteBtn = document.querySelector('.delete');
 // form.addEventListener('submit',async (event)=>{
 //     event.preventDefault()
 //     console.log(event.target.photo.files[0])
@@ -11,9 +11,9 @@ const deleteBtn = document.querySelector('.delete')
 //         },
 //         body,
 //       });
-  
+
 //       const responseJson = await response.json();
-  
+
 //       if (!responseJson.isUpdateSuccessful) {
 //         const errorDiv = document.createElement('div');
 //         errorDiv.classList.add('error');
@@ -21,12 +21,12 @@ const deleteBtn = document.querySelector('.delete')
 //         event.target.parentElement.append(errorDiv);
 //         return;
 //       }
-  
+
 //       window.location = `/admin`;
 //     })
 
-deleteBtn.addEventListener('click',async (event)=>{
-  console.log(event.target.dataset.id)
+deleteBtn.addEventListener('click', async (event) => {
+  console.log(event.target.dataset.id);
   const response = await fetch(`/admin/${event.target.dataset.id}`, {
     method: 'DELETE',
   });
@@ -35,11 +35,11 @@ deleteBtn.addEventListener('click',async (event)=>{
 
   if (!responseJson.isDeleteSuccessful) {
     const errorDiv = document.createElement('div');
-        errorDiv.classList.add('error');
-        errorDiv.innerText = responseJson.errorMessage;
-        event.target.parentElement.append(errorDiv);
-        
+    errorDiv.classList.add('error');
+    errorDiv.innerText = responseJson.errorMessage;
+    event.target.parentElement.append(errorDiv);
+
     return;
   }
-  window.location = `/admin`;
-})
+  window.location = '/admin';
+});

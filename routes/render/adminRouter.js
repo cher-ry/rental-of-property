@@ -7,9 +7,10 @@ const EditAdd = require('../../views/EditAdd');
 
 router.route('/')
   .get(async (req, res) => {
+    const { user } = res.locals;
     if (req.session.adminID) {
       const articles = await Article.findAll({ raw: true });
-      res.renderComponent(AdminPage, { articles });
+      res.renderComponent(AdminPage, { articles, user });
     } else {
       res.redirect('/auth');
     }
@@ -52,34 +53,44 @@ router.route('/:id/edit')
     res.renderComponent(EditAdd, { add });
   })
   .post(async (req, res) => {
-    const { photo } = req.files;
-    const photopath = path.resolve(__dirname, '../../public/images', photo.name);
-
-    photo.mv(photopath, (err) => {
-      if (err) { return res.status(500).send(err); }
-
-      res.send('File uploaded!');
-    });
-    try {
+    if (!req.files) {
       const entry = await Article.update({
         category: req.body.category,
         price: req.body.price,
         description: req.body.description,
-        photo: photopath,
         address: req.body.address,
       }, {
         where: { id: req.params.id },
       });
+    } else {
+      try {
+        const { photo } = req.files;
+        const photopath = path.resolve(__dirname, '../../public/images', photo.name);
 
-      res.json({ isUpdateSuccessful: true });
-    } catch (error) {
-      res.json({
-        isUpdateSuccessful: false,
-        errorMessage: 'Не удалось обновить объявление в базе данных.',
-      });
+        photo.mv(photopath, (err) => {
+          if (err) { return res.status(500).send(err); }
+
+          res.send('File uploaded!');
+        });
+        const entry = await Article.update({
+          category: req.body.category,
+          price: req.body.price,
+          description: req.body.description,
+          photo: photopath,
+          address: req.body.address,
+        }, {
+          where: { id: req.params.id },
+        });
+
+        res.json({ isUpdateSuccessful: true });
+      } catch (error) {
+        res.json({
+          isUpdateSuccessful: false,
+          errorMessage: 'Не удалось обновить объявление в базе данных.',
+        });
+      }
     }
-
-    res.send({ ok: 'test' });
+    res.redirect('/admin')
   });
 
 router.delete('/:id', async (req, res) => {

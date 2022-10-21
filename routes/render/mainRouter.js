@@ -5,7 +5,6 @@ const MainPage = require('../../views/MainPage');
 
 router.route('/').get(async (req, res) => {
   const { user } = res.locals;
-  console.log(user);
   const articles = await Article.findAll({ raw: true });
 
   res.renderComponent(MainPage, { articles, user });

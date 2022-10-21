@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
   const {
     login, password, email, passwordconf, role,
   } = req.body;
-  
+
   const userEmail = await User.findOne({
     where: {
       login,
@@ -34,10 +34,13 @@ router.post('/', async (req, res) => {
       login,
       email,
       password: hashedPassword,
-      admin:role,
+      admin: role,
     });
-    
+
     newUser.save();
+    if (newUser.admin) {
+      req.session.adminId = newUser.id;
+    }
     req.session.userId = newUser.id;
     res.json({ registration: true });
   } catch ({ message }) {
