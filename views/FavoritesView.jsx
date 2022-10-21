@@ -6,7 +6,7 @@ function FavoritesView({ articles, user }) {
   return (
     <Layout user={user}>
       {articles.map((article) => (
-        <section className="card-one">
+        <section className="card-one" id={`button5${article.id}`}>
           <img src={`${article.photo}`} className="card-photo" alt="article" style={{ width: '18rem' }} />
           <div className="card-body">
             <p className="card-text">{`${article.description}`}</p>
@@ -25,6 +25,7 @@ function FavoritesView({ articles, user }) {
           </button>
         </section>
       ))}
+      <script defer src="js/favoritePage.js" />
     </Layout>
   );
 }

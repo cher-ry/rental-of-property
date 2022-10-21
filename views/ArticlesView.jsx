@@ -24,6 +24,7 @@ function ArticlesView({ articles, user }) {
             </button>
             )}
           </div>
+          <div className = {`status${article.id}`}></div>
         </section>
 
       ))}
