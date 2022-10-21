@@ -2,10 +2,13 @@ const React = require('react');
 
 function ArticlesView({ articles, user }) {
   return (
-    <>
+    <div className="allArticles">
       {articles.map((article) => (
         <section className="card-one" id={article.id} key={article.id}>
+
           <img src={`${article.photo}`} className="card-photo" alt="article" style={{ width: '18rem' }} />
+
+
           <div className="card-body">
             <p className="card-text">{`${article.description}`}</p>
             <p className="card-text">{`${article.address}`}</p>
@@ -25,11 +28,11 @@ function ArticlesView({ articles, user }) {
             </button>
             )}
           </div>
-          <div className = {`status${article.id}`}></div>
+          <div className={`status${article.id}`} />
         </section>
 
       ))}
-    </>
+    </div>
   );
 }
 
