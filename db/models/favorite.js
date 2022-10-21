@@ -2,7 +2,6 @@ const {
   Model,
 } = require('sequelize');
 
-
 module.exports = (sequelize, DataTypes) => {
   class Favorite extends Model {
     /**
@@ -10,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-
-  Favorite.init({
 
     static associate() {
 
