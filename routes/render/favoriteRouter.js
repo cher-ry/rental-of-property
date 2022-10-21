@@ -1,9 +1,8 @@
 const router = require('express').Router();
 
 const { Favorite, Article } = require('../../db/models');
-const ArticlesView = require('../../views/ArticlesView');
-const MainPage = require('../../views/MainPage');
 const { getUser } = require('../../middleware/ssr');
+const FavoritesView = require('../../views/FavoritesView');
 
 router.route('/').post(async (req, res) => {
   const { articleID } = req.body;
@@ -39,7 +38,7 @@ router.route('/').get(async (req, res) => {
   });
   // console.log({ userId });
   // console.log(articles[0].FavoredBy);
-  res.renderComponent(MainPage, { articles, user: userId });
+  res.renderComponent(FavoritesView, { articles, user: userId });
 
 });
 

@@ -11,8 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
 
-  Favorite.init({
-
     static associate() {
 
       // define association here

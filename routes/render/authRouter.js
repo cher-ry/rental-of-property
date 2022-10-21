@@ -3,7 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
 const Authentication = require('../../views/Authentication');
-const Forgot = require('../../views/Forgot')
+const Forgot = require('../../views/Forgot');
 const { User } = require('../../db/models');
 const { mailer, messageCreator } = require('../../config/nodemailerConfig');
 
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
-    const errMessage = "Неправильные email или пароль";
+    const errMessage = 'Неправильные email или пароль';
     if (!user) {
       res.json({ login: false, message: errMessage });
     }
@@ -25,17 +25,16 @@ router.post('/', async (req, res) => {
     }
 
     if (user.admin) {
-
       req.session.adminID = user.id;
     } else {
       req.session.userID = user.id;
     }
 
-    res.json({ login: true })
+    res.json({ login: true });
   } catch (error) {
     console.log(error.message);
   }
-})
+});
 router.get('/forgot', (req, res) => {
   res.renderComponent(Forgot, {});
 });
@@ -53,7 +52,7 @@ router.post('/forgot', async (req, res) => {
 
     const message = messageCreator(userInDb.email, 'Reset your password', `
       If you have forgotten your account password, you can recover it at any time.
-    `)
+    `);
     // фактическая отправка письма на почту пользователя
     mailer(message);
 
@@ -64,6 +63,5 @@ router.post('/forgot', async (req, res) => {
     res.status(403).json({ reset: false, message: 'This email is not used in the system' });
   }
 });
-
 
 module.exports = router;
