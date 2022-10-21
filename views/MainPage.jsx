@@ -8,7 +8,9 @@ function MainPage({ articles, user }) {
     <Layout user={user}>
       <script defer src="https://api-maps.yandex.ru/2.1/?apikey=a6375016-4e69-4b91-949c-0b2e86a23a35&lang=ru_RU" />
       <script defer src="/js/mapMain.js" />
+
       <div id="map" className="map main" />
+
       <div className="filter-container">
         <label htmlFor="filter" className="form-label">Отсортировать</label>
         <select name="filter" className="filter-btn">
