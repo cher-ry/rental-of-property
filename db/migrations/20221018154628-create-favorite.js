@@ -5,18 +5,18 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-      references: {
-        model: 'Users',
-        key: 'id',
-      },
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
       articleId: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-      references: {
-        model: 'Articles',
-        key: 'id',
-      },
+        references: {
+          model: 'Articles',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
