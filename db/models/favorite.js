@@ -1,7 +1,7 @@
 const {
   Model,
 } = require('sequelize');
-const user = require('./user');
+
 
 module.exports = (sequelize, DataTypes) => {
   class Favorite extends Model {
@@ -11,12 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate() {
-      
+
       // define association here
     }
   }
   Favorite.init({
-    
     userId: {
       type: DataTypes.INTEGER,
       primaryKey: true,

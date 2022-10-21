@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     /**
@@ -9,17 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({User,Favorite}) {
-      Article.belongsToMany(User,{
+    static associate({ User, Favorite }) {
+      Article.FavoredBy = Article.belongsToMany(User, {
         through: Favorite,
-        foreignKey:"articleId",
-        otherKey: "userId"
-      }),
-      User.belongsToMany(Article, {
-        through: Favorite,
-        foreignKey: "userId",
-        otherKey: "articleId"
+        foreignKey: 'articleId',
+        otherKey: 'userId',
+        as: 'FavoredBy',
       });
+      // User.belongsToMany(Article, {
+      //   through: Favorite,
+      //   foreignKey: 'userId',
+      //   otherKey: 'articleId',
+      // });
     }
   }
   Article.init({
