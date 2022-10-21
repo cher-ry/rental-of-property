@@ -11,7 +11,7 @@ function ArticlesView({ articles, user }) {
             <p className="card-text">{`${article.address}`}</p>
             <p className="card-text">
               Цена:
-              {' '}
+              {'  '}
               {article.price}
             </p>
             {user && (

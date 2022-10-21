@@ -19,7 +19,7 @@ router.route('/')
     const { photo } = req.files;
 
     const photopath = path.resolve(__dirname, '../../public/images', photo.name);
-    const newpath = path.resolve('/images', photo.name);
+    const newpath = path.resolve('/images', photo.name) 
     photo.mv(photopath, (err) => {
       if (err) { return res.status(500).send(err); }
     });
