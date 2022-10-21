@@ -22,8 +22,6 @@ router.route('/')
 
     photo.mv(photopath, (err) => {
       if (err) { return res.status(500).send(err); }
-
-      res.send('File uploaded!');
     });
     try {
       const newAdd = await Article.create({
