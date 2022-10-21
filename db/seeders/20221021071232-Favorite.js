@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface) {
     await queryInterface.bulkInsert('Favorites', [{
-      userId: 3,
+      userId: 2,
       articleId: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
