@@ -14,12 +14,12 @@ router.route('/').post(async (req, res) => {
       userId: user,
       articleId: articleID,
     });
-
-    newFavorite.save();
+    console.log(newFavorite);
 
     res.json({ favorite: true });
   } catch ({ message }) {
     console.log(message);
+    res.json({ favorite: false });
   }
 });
 
@@ -39,7 +39,25 @@ router.route('/').get(async (req, res) => {
   // console.log({ userId });
   // console.log(articles[0].FavoredBy);
   res.renderComponent(FavoritesView, { articles, user: userId });
+});
+router.delete('/:articleId', async (req, res) => {
+  const { articleId } = req.params;
+  console.log(articleId.articleId);
+  const { userId } = res.locals;
 
+  console.log(userId);
+  try {
+    const newFavorite = await Favorite.destroy({
+      where: {
+        userId,
+        articleId,
+      },
+    });
+
+    res.json({ result: true });
+  } catch ({ message }) {
+    console.log(message);
+  }
 });
 
 module.exports = router;
